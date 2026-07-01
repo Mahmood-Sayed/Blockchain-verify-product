@@ -4,6 +4,4 @@ node_modules/
 artifacts/
 cache/
 backend/config/contract.json
-frontend/src/config/contract.json
-frontend/src/artifacts/
 .DS_Store
