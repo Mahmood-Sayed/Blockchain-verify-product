@@ -138,7 +138,7 @@ export default function Login() {
                     onChange={e => setForm({ ...form, email: e.target.value })}
                     required
                     style={{
-                      width: "100%", padding: "0.9rem 1rem 0.9rem 2.8rem",
+                      width: "100%", boxSizing: "border-box", padding: "0.9rem 1rem 0.9rem 2.8rem",
                       fontSize: "0.95rem", borderRadius: 10,
                       border: "1.5px solid #e2e6f0",
                       background: "#f8f9fc",
@@ -174,7 +174,7 @@ export default function Login() {
                     onChange={e => setForm({ ...form, password: e.target.value })}
                     required
                     style={{
-                      width: "100%", padding: "0.9rem 3rem 0.9rem 2.8rem",
+                      width: "100%", boxSizing: "border-box", padding: "0.9rem 3rem 0.9rem 2.8rem",
                       fontSize: "0.95rem", borderRadius: 10,
                       border: "1.5px solid #e2e6f0",
                       background: "#f8f9fc",
