@@ -5,21 +5,12 @@ const { protect } = require("../middleware/auth");
 let Product;
 try { Product = require("../models/Product"); } catch(e) {}
 
-// GET /api/products — get all products for logged-in manufacturer
+// GET /api/products — get only the logged-in manufacturer's products
 router.get("/", protect, async (req, res) => {
   try {
     if (!Product) return res.json({ products: [] });
 
-    const conditions = [];
-    if (req.user.walletAddress) conditions.push({ manufacturerWallet: req.user.walletAddress });
-    if (req.user.name)          conditions.push({ manufacturer: req.user.name });
-    if (req.user.company)       conditions.push({ manufacturer: req.user.company });
-    if (req.user.email)         conditions.push({ manufacturer: req.user.email });
-    if (req.user.id)            conditions.push({ manufacturerId: req.user.id });
-
-    if (conditions.length === 0) return res.json({ products: [] });
-
-    const productList = await Product.find({ $or: conditions }).sort({ createdAt: -1 });
+    const productList = await Product.find({ manufacturerId: req.user.id }).sort({ createdAt: -1 });
     res.json({ products: productList });
   } catch (err) {
     res.status(500).json({ message: err.message });
