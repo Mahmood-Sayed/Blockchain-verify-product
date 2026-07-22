@@ -8,7 +8,7 @@ try { User = require("../models/User"); } catch(e) {}
 const signToken = (user) =>
   jwt.sign(
     {
-      id: user._id || user.id,
+      id: user._id ? user._id.toString() : user.id,
       email: user.email,
       role: user.role,
       name: user.name,
