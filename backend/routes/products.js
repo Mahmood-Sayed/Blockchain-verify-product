@@ -20,9 +20,11 @@ router.get("/", protect, async (req, res) => {
 // POST /api/products
 router.post("/", protect, async (req, res) => {
   try {
+    console.log("req.user:", JSON.stringify(req.user));
+    console.log("req.user.id:", req.user.id);
+    
     const { name, serialNumber, description, category, txHash, blockNumber, manufacturerWallet, manufacturer } = req.body;
-    if (!name || !serialNumber) return res.status(400).json({ message: "Name and serial number are required" });
-
+    // ... rest stays the same
     if (Product) {
       const exists = await Product.findOne({ serialNumber });
       if (exists) return res.status(400).json({ message: "Serial number already registered" });
