@@ -6,6 +6,7 @@ const productSchema = new mongoose.Schema(
     serialNumber: { type: String, required: true, unique: true, trim: true },
     manufacturer: { type: String, required: true },
     manufacturerWallet: { type: String, required: true },
+    manufacturerId: { type: String, default: null }, 
     description: { type: String, default: "" },
     category: { type: String, default: "General" },
     txHash: { type: String, default: null },
